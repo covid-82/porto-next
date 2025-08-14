@@ -1,4 +1,4 @@
-import "./../styles/globals.css";
+import "././globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Nav from "@/components/Nav";
 
