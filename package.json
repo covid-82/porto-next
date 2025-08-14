@@ -1,6 +1,6 @@
 {
   "name": "nextjs-portfolio-blog-adi",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 3000",
@@ -13,23 +13,22 @@
   },
   "dependencies": {
     "@prisma/client": "latest",
+    "@tailwindcss/postcss": "latest",
     "framer-motion": "latest",
     "lucide-react": "latest",
     "next": "latest",
     "next-themes": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "tailwindcss": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "autoprefixer": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "postcss": "latest",
     "prisma": "latest",
-    "tailwindcss": "latest",
     "typescript": "latest"
   },
   "engines": { "node": ">=18" }
