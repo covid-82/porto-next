@@ -13,14 +13,13 @@
   },
   "dependencies": {
     "@prisma/client": "latest",
-    "@tailwindcss/postcss": "latest",
     "framer-motion": "latest",
     "lucide-react": "latest",
     "next": "latest",
     "next-themes": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "tailwindcss": "latest"
+    "tailwindcss": "^3.4.13"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -29,7 +28,9 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "prisma": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "postcss": "^8.4.38",
+    "autoprefixer": "^10.4.20"
   },
   "engines": {
     "node": ">=18"
