@@ -1,0 +1,4 @@
+{
+  "build": { "env": {} },
+  "functions": { "api/**.func": { "memory": 1024, "maxDuration": 10 } }
+}
