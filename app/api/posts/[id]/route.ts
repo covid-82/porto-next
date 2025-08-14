@@ -1,9 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request, { params }: { params: { id: string } }) {
+export async function POST(req: Request, context: { params: { id: string } }) {
+  const { params } = context;
+
   const url = new URL(req.url);
   const m = url.searchParams.get("_method")?.toUpperCase();
+
   const id = Number(params.id);
   if (!id) return new Response("Invalid id", { status: 400 });
 
@@ -13,11 +16,14 @@ export async function POST(req: Request, { params }: { params: { id: string } })
   }
 
   const form = await req.formData();
-  const title = String(form.get("title")||"");
-  const slug = String(form.get("slug")||"");
-  const content = String(form.get("content")||"");
+  const title = String(form.get("title") || "");
+  const slug = String(form.get("slug") || "");
+  const content = String(form.get("content") || "");
   if (!title || !slug) return new Response("Missing fields", { status: 400 });
 
-  const updated = await prisma.post.update({ where: { id }, data: { title, slug, content } });
+  const updated = await prisma.post.update({
+    where: { id },
+    data: { title, slug, content }
+  });
   return NextResponse.redirect(new URL(`/blog/${updated.slug}`, req.url));
 }
