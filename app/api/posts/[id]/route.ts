@@ -1,17 +1,16 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request, context: { params: { id: string } }) {
-  const { params } = context;
+export async function POST(req: Request, context: any) {
+  const { id } = (context?.params || {}) as { id?: string };
+  const numId = Number(id);
+  if (!numId) return new Response("Invalid id", { status: 400 });
 
   const url = new URL(req.url);
   const m = url.searchParams.get("_method")?.toUpperCase();
 
-  const id = Number(params.id);
-  if (!id) return new Response("Invalid id", { status: 400 });
-
   if (m === "DELETE") {
-    await prisma.post.delete({ where: { id } });
+    await prisma.post.delete({ where: { id: numId } });
     return NextResponse.redirect(new URL("/blog", req.url));
   }
 
@@ -22,8 +21,9 @@ export async function POST(req: Request, context: { params: { id: string } }) {
   if (!title || !slug) return new Response("Missing fields", { status: 400 });
 
   const updated = await prisma.post.update({
-    where: { id },
+    where: { id: numId },
     data: { title, slug, content }
   });
+
   return NextResponse.redirect(new URL(`/blog/${updated.slug}`, req.url));
 }
