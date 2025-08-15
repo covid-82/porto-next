@@ -13,15 +13,19 @@ export default function Nav() {
     <header className="sticky top-0 z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur border-b border-slate-200 dark:border-slate-800">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold drop-shadow-glow">AG</div>
+          <div className="h-9 w-9 rounded-xl bg-blue-600 grid place-items-center font-bold text-slate-900 dark:text-white">
+            AG
+          </div>
           <div className="leading-tight">
-            <div className="font-bold">Adi Gusman</div>
-            <div className="text-xs text-slate-500 dark:text-slate-400">Tangerang, Banten, Indonesia</div>
+            <div className="font-bold text-slate-900 dark:text-white">Adi Gusman</div>
+            <div className="text-xs text-slate-600 dark:text-slate-400">Tangerang, Banten, Indonesia</div>
           </div>
         </Link>
         <div className="flex items-center gap-2">
-          <Link href="/blog" className="px-3 py-1.5 rounded-lg border text-sm border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Blog</Link>
-          <a href="mailto:adi@example.com" className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-500 text-white text-sm"><Mail className="h-4 w-4"/>Contact</a>
+          <Link href="/blog" className="btn-ghost">Blog</Link>
+          <a href="mailto:adi@example.com" className="btn-primary hidden sm:inline-flex gap-2">
+            <Mail className="h-4 w-4"/>Contact
+          </a>
           {mounted && (
             <button
               onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
